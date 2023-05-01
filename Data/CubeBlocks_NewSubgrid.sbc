@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CubeBlocks>
+
+	  <!-- Region MotorStator-->
+	  <Definition xsi:type="MyObjectBuilder_MotorStatorDefinition">
+		  <Id>
+			  <TypeId>MotorStator</TypeId>
+			  <SubtypeId>SubgridBase</SubtypeId>
+		  </Id>
+		  <DisplayName> [USE THIS] Invincible Subgrid</DisplayName>
+		  <Icon>Textures\Icons\protectionfromkeen.dds</Icon>
+		  <Description>PLACE THIS ON YOUR SHIP TO HAVE PROTECTION AGAINST KEENCODE</Description>
+		  <CubeSize>Large</CubeSize>
+		  <BlockTopology>TriangleMesh</BlockTopology>
+		  <Size x="1" y="1" z="1" />
+		  <ModelOffset x="0" y="0" z="0" />
+		  <Model>Models\AttachmentBase.mwm</Model>
+		  <Components>
+			  <Component Subtype="SteelPlate" Count="10" />
+			  <Component Subtype="Construction" Count="10" />
+			  <Component Subtype="LargeTube" Count="4" />
+			  <Component Subtype="Motor" Count="4" />
+			  <Component Subtype="Computer" Count="2" />
+			  <Component Subtype="SteelPlate" Count="5" />
+			  <Component Subtype="ADMINKIT" Count="1" />
+		  </Components>
+		  <CriticalComponent Subtype="Computer" Index="0" />
+		  <MountPoints>
+			  <MountPoint Side="Bottom" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8" Default="true" />
+			  <MountPoint Side="Left" StartX="0.25" StartY="0" EndX="0.75" EndY="0.61" />
+			  <MountPoint Side="Right" StartX="0.25" StartY="0" EndX="0.75" EndY="0.61" />
+			  <MountPoint Side="Front" StartX="0.25" StartY="0" EndX="0.75" EndY="0.61" />
+			  <MountPoint Side="Back" StartX="0.25" StartY="0" EndX="0.75" EndY="0.61" />
+		  </MountPoints>
+		  <BuildProgressModels>
+		  </BuildProgressModels>
+		  <BlockPairName></BlockPairName>
+		  <MirroringY>Z</MirroringY>
+		  <MirroringZ>Y</MirroringZ>
+		  <EdgeType>Light</EdgeType>
+		  <BuildTimeSeconds>20</BuildTimeSeconds>
+		  <PrimarySound>BlockRotor</PrimarySound>
+		  <ResourceSinkGroup>Utility</ResourceSinkGroup>
+		  <RequiredPowerInput>0.002</RequiredPowerInput>
+		  <MaxForceMagnitude>1E9</MaxForceMagnitude>
+		  <DangerousTorqueThreshold>3.36E+07</DangerousTorqueThreshold>
+		  <PropulsionForce>8000</PropulsionForce>
+		  <RotorPart>SubgridTop</RotorPart>
+		  <RotorDisplacementMin>-0.4</RotorDisplacementMin>
+		  <RotorDisplacementMax>0.2</RotorDisplacementMax>
+		  <RotorDisplacementMinSmall>-0.11</RotorDisplacementMinSmall>
+		  <RotorDisplacementMaxSmall>0.11</RotorDisplacementMaxSmall>
+		  <RotorDisplacementInModel>0.0</RotorDisplacementInModel>
+		  <GuiVisible>false</GuiVisible>
+		  <DamageEffectName>Damage_HeavyMech_Damaged</DamageEffectName>
+		  <DamagedSound>ParticleHeavyMech</DamagedSound>
+		  <SafetyDetach>15</SafetyDetach>
+		  <SafetyDetachMax>15</SafetyDetachMax>
+		  <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+		  <DestroySound>WepSmallWarheadExpl</DestroySound>
+		  <RotorType>Rotor</RotorType>
+		  <PCU>100</PCU>
+		  <IsAirTight>false</IsAirTight>
+	  </Definition>
+	  <Definition>
+		  <Id>
+			  <TypeId>MotorRotor</TypeId>
+			  <SubtypeId>SubgridTop</SubtypeId>
+		  </Id>
+		  <DisplayName>[DO NOT USE] Invincible Subgrid Top Part</DisplayName>
+		  <Icon>Textures\GUI\Icons\Cubes\RotorPart.dds</Icon>
+		  <Description>THIS IS THE WRONG ONE. USE THE BASE, OR YOUR GRID WILL BE SENT TO THE SHADOW REALM.</Description>
+		  <BlockPairName>SubgridTop</BlockPairName>
+		  <CubeSize>Large</CubeSize>
+		  <GuiVisible>false</GuiVisible>
+		  <BlockTopology>TriangleMesh</BlockTopology>
+		  <Size x="1" y="1" z="1" />
+		  <ModelOffset x="0" y="0" z="0" />
+		  <Model>Models\smallhitbox.mwm</Model>
+		  <UseModelIntersection>true</UseModelIntersection>
+		  <Components>
+			  <!-- top part  cost is not balance-only issue,  rotor "overtravel" issue  when rotation limits are set is reduced by adding more weight into top part -->
+			  <Component Subtype="SteelPlate" Count="30" />
+			  <Component Subtype="LargeTube" Count="6" />
+			  <Component Subtype="ADMINKIT" Count="1" />
+		  </Components>
+		  <CriticalComponent Subtype="Computer" Index="0" />
+		  <MountPoints>
+		<MountPoint Side="Bottom" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8" Default="false" />
+		  </MountPoints>
+		  <BuildProgressModels>
+		  </BuildProgressModels>
+		  <MirroringY>Z</MirroringY>
+		  <MirroringZ>Y</MirroringZ>
+		  <EdgeType>Light</EdgeType>
+		  <BuildTimeSeconds>5</BuildTimeSeconds>
+		  <PCU>1</PCU>
+		  <IsAirTight>false</IsAirTight>
+	  </Definition>
+	  <Definition>
+		  <Id>
+			  <TypeId>MotorRotor</TypeId>
+			  <SubtypeId>SubgridTopSmall</SubtypeId>
+		  </Id>
+		  <DisplayName>[DO NOT USE] Invincible Subgrid Top Part Small</DisplayName>
+		  <Icon>Textures\GUI\Icons\Cubes\RotorPart.dds</Icon>
+		  <Description>THIS IS THE WRONG ONE. USE THE BASE, OR YOUR GRID WILL BE SENT TO THE SHADOW REALM.</Description>
+		  <BlockPairName>SubgridTopSmall</BlockPairName>
+		  <CubeSize>Small</CubeSize>
+		  <GuiVisible>false</GuiVisible>
+		  <BlockTopology>TriangleMesh</BlockTopology>
+		  <Size x="1" y="1" z="1" />
+		  <ModelOffset x="0" y="0" z="0" />
+		  <Model>Models\smallhitbox.mwm</Model>
+		  <UseModelIntersection>true</UseModelIntersection>
+		  <Components>
+			  <!-- top part  cost is not balance-only issue,  rotor "overtravel" issue  when rotation limits are set is reduced by adding more weight into top part -->
+			  <Component Subtype="SteelPlate" Count="30" />
+			  <Component Subtype="LargeTube" Count="6" />
+			  <Component Subtype="ADMINKIT" Count="1" />
+		  </Components>
+		  <CriticalComponent Subtype="Computer" Index="0" />
+		  <MountPoints>
+		<MountPoint Side="Bottom" StartX="0.2" StartY="0.2" EndX="0.8" EndY="0.8" Default="false" />
+		  </MountPoints>
+		  <BuildProgressModels>
+		  </BuildProgressModels>
+		  <MirroringY>Z</MirroringY>
+		  <MirroringZ>Y</MirroringZ>
+		  <EdgeType>Light</EdgeType>
+		  <BuildTimeSeconds>5</BuildTimeSeconds>
+		  <PCU>1</PCU>
+		  <IsAirTight>false</IsAirTight>
+	  </Definition>
+
+	  <!-- End Region MotorStator-->
+
+  </CubeBlocks>
+</Definitions>

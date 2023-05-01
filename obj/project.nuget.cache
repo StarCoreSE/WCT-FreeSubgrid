@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "K66graOJ4GDvWwIu3jTqgIx4Pb6VZ5S7w3Cg0AUFCTNY345lp4YL5/W4EGFChnChal3uGolHIcJypRIsKeDZxA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\User\\AppData\\Roaming\\SpaceEngineers\\Mods\\WCT FreeSubgrid\\CoreParts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
