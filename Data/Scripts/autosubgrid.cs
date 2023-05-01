@@ -1,37 +1,53 @@
+using System;
 using System.Collections.Generic;
+using System.Text;
 using Sandbox.Common.ObjectBuilders;
-using Sandbox.Game.GameSystems;
+using Sandbox.Game;
 using Sandbox.ModAPI;
 using Sandbox.ModAPI.Ingame;
 using Sandbox.ModAPI.Interfaces;
+using Sandbox.ModAPI.Interfaces.Terminal;
 using VRage.Game.Components;
 using VRage.ModAPI;
 using VRage.ObjectBuilders;
-using VRageMath;
 
-public class AddRotorHeadMod : MyGridProgram
+namespace autosubgrid
 {
-    private const int UPDATE_FREQUENCY = 5; // update frequency in seconds
-    private int ticks = 10; // counter for ticks
-
-    public void Main(string argument)
+    [MyEntityComponentDescriptor(typeof(MyObjectBuilder_MotorStator), false, "SubgridBase")]
+    public class StatorTop : MyGameLogicComponent
     {
-        ticks++;
+        Sandbox.ModAPI.IMyMotorStator stator;
 
-        if (ticks % (UPDATE_FREQUENCY * 60) == 0) // check if it's time to update
+        public override void Init(MyObjectBuilder_EntityBase objectBuilder)
         {
-            var rotors = new List<Sandbox.ModAPI.IMyMotorStator>();
-            GridTerminalSystem.GetBlocksOfType(rotors, block => block is Sandbox.ModAPI.IMyMotorStator && block.IsFunctional);
-            foreach (var rotor in rotors)
+            if (MyAPIGateway.Session.IsServer)
             {
-                Sandbox.ModAPI.IMyTerminalBlock rotorTerminal = rotor as Sandbox.ModAPI.IMyTerminalBlock;
-                if (rotorTerminal != null)
-                {
-                    ITerminalAction addHeadAction = rotorTerminal.GetActionWithName("Add Rotor Head");
-                    addHeadAction.Apply(rotorTerminal);
-                    Echo("Rotor head added");
-                }
+                stator = Entity as Sandbox.ModAPI.IMyMotorStator;
+                NeedsUpdate = MyEntityUpdateEnum.BEFORE_NEXT_FRAME;
             }
+        }
+
+        public override void UpdateOnceBeforeFrame()
+        {
+            if (stator != null && stator.CubeGrid.Physics != null)
+            {
+                NeedsUpdate = MyEntityUpdateEnum.EACH_100TH_FRAME;
+            }
+        }
+
+        public override void UpdateAfterSimulation100()
+        {
+            if (stator != null && stator.CubeGrid.Physics != null && stator.Top == null)
+            {
+
+                MyVisualScriptLogicProvider.SendChatMessage("An Invincible Subgrid™ has lost is head for some reason. Just letting you know :^)");
+                stator.ApplyAction("AddRotorTopPart");
+            }
+        }
+
+        public override void Close()
+        {
+
         }
     }
 }
