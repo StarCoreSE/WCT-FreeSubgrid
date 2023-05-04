@@ -40,7 +40,7 @@ namespace autosubgrid
             if (stator != null && stator.CubeGrid.Physics != null && stator.Top == null)
             {
 
-                MyVisualScriptLogicProvider.SendChatMessage("An Invincible Subgrid(tm) has lost is head for some reason. But This script should have put it back. Just letting you know :^)");
+                //MyVisualScriptLogicProvider.SendChatMessage("An Invincible Subgrid(tm) has lost is head for some reason. But This script should have put it back. Just letting you know :^)");
                 stator.ApplyAction("AddRotorTopPart");
             }
         }
